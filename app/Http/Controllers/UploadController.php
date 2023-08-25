@@ -19,12 +19,12 @@ class UploadController extends Controller
         ], $request->all());
 
         $file = $request->file('file');
-        $path = $file->store('attachments', ['disk' => 'spaces', 'visibility' => 'public']);
+        $path = $file->store('attachments');
         dump($path);
 
-        $url = Storage::disk('spaces')->url($path);
+        $url = Storage::url($path);
         dump($url);
 
-        echo "<img src='${url}' />";
+        echo "<img src='$url' />";
     }
 }
